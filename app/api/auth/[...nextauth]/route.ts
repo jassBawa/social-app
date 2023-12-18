@@ -1,10 +1,10 @@
 import prisma from "@/libs/prismadb";
 import { PrismaAdapter } from "@auth/prisma-adapter";
-import NextAuth from "next-auth/next";
-import CredentialsProvider from "next-auth/providers/credentials";
 import bcrypt from "bcrypt";
+import NextAuth, { NextAuthOptions } from "next-auth";
+import CredentialsProvider from "next-auth/providers/credentials";
 
-const handler = NextAuth({
+export const authOptions: NextAuthOptions = {
   adapter: PrismaAdapter(prisma),
   providers: [
     CredentialsProvider({
@@ -30,7 +30,7 @@ const handler = NextAuth({
           user.hashedPassword
         );
 
-        if (!isPasswordCorrect) throw new Error("Invalid credentials");
+        if (!isPasswordCorrect) throw new Error("Invalid password");
 
         return user;
       },
@@ -44,6 +44,8 @@ const handler = NextAuth({
     secret: process.env.NEXTAUTH_JWT_SECRET,
   },
   secret: process.env.NEXTAUTH_SECRET,
-});
+};
+
+const handler = NextAuth(authOptions);
 
 export { handler as GET, handler as POST };
