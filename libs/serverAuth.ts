@@ -4,7 +4,7 @@ import { NextApiRequest } from "next";
 import { getServerSession } from "next-auth/next";
 import { getProviders } from "next-auth/react";
 
-const serverAuth = async (req: NextApiRequest) => {
+const serverAuth = async (req: Request) => {
   const providers = await getProviders();
   const session = await getServerSession(authOptions);
 

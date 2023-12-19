@@ -44,6 +44,7 @@ const Modal: React.FC<ModalProps> = ({
   return (
     <div
       className="flex 
+      
         items-center
         justify-center
         overflow-x-hidden
@@ -98,10 +99,10 @@ const Modal: React.FC<ModalProps> = ({
           </div>
 
           {/* Body */}
-          <div className="relative p-10 flex-auto">{body}</div>
+          <div className="relative px-10 py-5 flex-auto">{body}</div>
 
           {/* footer */}
-          <div className="flex flex-col gap-2 p-10">
+          <div className="flex flex-col gap-2 px-10 py-4">
             <Button
               disabled={disabled}
               label={actionLabel}

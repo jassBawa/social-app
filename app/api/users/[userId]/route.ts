@@ -22,8 +22,6 @@ export async function GET(
       },
     });
 
-    console.log(exisitingUser);
-
     const followersCount = await prisma.user.count({
       where: {
         followingIds: {
