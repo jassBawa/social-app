@@ -11,9 +11,8 @@ export async function GET(
 
   try {
     const userId = params.userId;
-    console.log(userId);
 
-    if (userId || typeof userId !== "string") {
+    if (!userId || typeof userId !== "string") {
       throw new Error("Invalid Id");
     }
 
@@ -22,6 +21,8 @@ export async function GET(
         id: userId,
       },
     });
+
+    console.log(exisitingUser);
 
     const followersCount = await prisma.user.count({
       where: {
@@ -35,6 +36,9 @@ export async function GET(
       status: 200,
     });
   } catch (error) {
-    return new Response("Server Error");
+    console.log(error);
+    return new Response("Server Error", {
+      status: 500,
+    });
   }
 }

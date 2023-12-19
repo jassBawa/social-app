@@ -18,6 +18,8 @@ export async function GET(req: NextApiRequest) {
     });
   } catch (error) {
     console.log(error);
-    return new Response("Server Error");
+    return new Response(JSON.stringify(error), {
+      status: 500,
+    });
   }
 }
