@@ -2,8 +2,9 @@ import { NextApiRequest, NextApiResponse } from "next";
 import bcrypt from "bcrypt";
 import prisma from "@/libs/prismadb";
 import serverAuth from "@/libs/serverAuth";
+import { NextRequest } from "next/server";
 
-export async function PATCH(req: Request, res: NextApiResponse) {
+export async function PATCH(req: NextRequest, res: NextApiResponse) {
   if (req.method !== "PATCH") {
     return new Response("POST API", { status: 405 });
   }

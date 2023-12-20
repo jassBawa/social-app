@@ -29,11 +29,19 @@ export default async function RootLayout({
         {/* <SessionProvider session={session}> */}
         <Toaster />
         <CombinedModal />
-        <div className="h-screen bg-black">
-          <div className="container h-full mx-auto">
+        <div className="h-screen relative bg-black overflow-hidden">
+          <div className="container h-full mx-auto xl:px-30 max-w-6xl">
             <div className="grid grid-cols-4 h-full">
               <Sidebar />
-              <div className="col-span-3 lg:col-span-2 border-x-[1px] border-neutral-800">
+              <div
+                className=" col-span-3 
+              lg:col-span-2 
+              border-x-[1px] 
+              h-full
+              no-scrollbar
+
+              border-neutral-800"
+              >
                 {children}
               </div>
               <FollowBar />

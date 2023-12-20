@@ -3,13 +3,14 @@ import prisma from "@/libs/prismadb";
 import { NextApiRequest } from "next";
 import { getServerSession } from "next-auth/next";
 import { getProviders } from "next-auth/react";
+import { NextRequest } from "next/server";
 
-const serverAuth = async (req: Request) => {
+const serverAuth = async (req: NextRequest) => {
   const providers = await getProviders();
   const session = await getServerSession(authOptions);
 
   if (!session?.user?.email) {
-    throw new Error(" line no -14Not signed in");
+    throw new Error("you are not signed in");
   }
 
   const currentUser = await prisma.user.findUnique({
