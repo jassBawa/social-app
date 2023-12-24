@@ -44,7 +44,6 @@ export async function GET(req: NextRequest, res: NextApiResponse) {
   try {
     const searchParams = req.nextUrl.searchParams;
     const userId = searchParams.get("userId");
-    console.log("------------------------------------------>", req.body);
 
     let posts;
 
