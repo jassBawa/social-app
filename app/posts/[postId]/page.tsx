@@ -1,6 +1,7 @@
 "use client";
 import Form from "@/components/Form";
 import Header from "@/components/Header";
+import CommentFeed from "@/components/posts/CommentFeed";
 import PostItem from "@/components/posts/PostItem";
 import usePost from "@/hooks/usePost";
 import useUser from "@/hooks/useUser";
@@ -24,6 +25,7 @@ export default function Page({ params }: { params: { postId: string } }) {
       <Header showBackArrow label="Tweet" />
       <PostItem data={fetchPost} />
       <Form postId={postId} isComment placeholder="Tweet your reply" />
+      <CommentFeed comments={fetchPost?.comments} />
     </>
   );
 }
